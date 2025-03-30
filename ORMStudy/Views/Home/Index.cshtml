@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ORMStudy.Models.Students>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Список студентов</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Пол</th>
+            <th>Команда</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.LastName</td>
+                <td>@student.Name</td>
+                <td>@student.Gender</td>
+                <td>@student.Team.TeamName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@student.Id">Подробнее</a> |
+                    <a asp-action="Delete" asp-route-id="@student.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
